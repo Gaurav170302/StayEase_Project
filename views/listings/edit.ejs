@@ -1,0 +1,44 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+<div class="row mt-3">
+<div class="col-8 offset-2">
+    <h2 class="mb-3">Edit Your Listing...</h2>
+    <form  method="POST" action="/listings/<%= listing._id %>?_gaurav=PUT">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="gaurav[title]" value="<%= listing.title %>" class="form-control">
+        </div>
+        
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea type="text" name="gaurav[description]" rows="6" cols="30" class="form-control"><%= listing.description %></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="text" name="gaurav[image]" value="<%= listing.image %>" class="form-control">
+        </div>
+
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <label for="price" class="form-label">Price</label> 
+                <input type="number" name="gaurav[price]" value="<%= listing.price %>" class="form-control">
+            </div>
+            <div class="mb-3 col-md">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" name="gaurav[country]" value="<%= listing.country %>" class="form-control">
+            </div>
+        </div>
+       
+        <div class="mb-3">
+            <label for="location">Location</label>
+            <input type="text" name="gaurav[location]" value="<%= listing.location %>" class="form-control">
+        </div>
+        
+       
+        <button class="btn edit-btn mb-3 mt-3">Edit</button>
+    </form>
+</div>
+</div>    
+</body>
