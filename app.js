@@ -6,8 +6,6 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 
-// const multer = require('multer');    While got errors in modifications like edit, delete on newly addeTA suugest to do it but not worked error not got resolved
-// const upload = multer({ dest: 'uploads/' }); // or configure as needed
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/StayEase";
 
@@ -63,12 +61,7 @@ app.get("/listings/new", (req, res) => {
     res.render("listings/new.ejs");
 })
 
-//Show Route
-app.get("/listings/:id", async (req, res) => {
-    let {id} = req.params;
-    const listing = await Listing.findById(id);
-    res.render("listings/show.ejs", {listing});
-});
+
 
 // // Create Route
 // app.post("/listings", async (req, res) => {
@@ -99,7 +92,7 @@ app.post("/listings", async (req, res) => {
 });
 
 
-// Create Route
+// Create Route another approach
 // app.post("/listings", upload.single("image"), async (req, res) => {
 //     const { title, description, price, location, country } = req.body.gaurav;
 
@@ -138,3 +131,15 @@ app.delete("/listings/:id", async (req, res) => {
     res.redirect("/listings");
     console.log(deletedListing);
 });
+
+//Show Route    solution :- the interpreter reads the code line by line when we put the show route at first the remaining routes line listing/user is there for example one route  the browser thinks user is also one id (when error occured my TA suggest me to put show route at last)
+app.get("/listings/:id", async (req, res) => {
+    let {id} = req.params;
+    const listing = await Listing.findById(id);
+    res.render("listings/show.ejs", {listing});
+});
+
+
+// Errors occured in project
+// Error 1 :- the default img is not getting the image name is converting to id    
+//  Solution 1 :- the interpreter reads the code line by line when we put the show route at first the remaining routes line listing/user is there for example one route  the browser thinks user is also one id (when error occured my TA suggest me to put show route at last)

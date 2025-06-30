@@ -14,9 +14,22 @@
                         </a>
                         <div class="card-body">
                             <h5 class="card-title"><%= listing.title %></h5>
+                    
+                            
+                            <!-- The error in above commented P tag is:
+
+                            TypeError: Cannot read properties of null (reading 'toLocaleString')
+                            This means that listing.price is null or undefined in some of your data, so when you try to call .toLocaleString("en-IN"), it throws an error.
+
+                            ✅ Solution:
+                            Before calling .toLocaleString(), you should check if listing.price exists.
+
+                            Update your EJS code like this:  -->
+
                             <p class="card-text">
-                                ₹<%= listing.price.toLocaleString("en-IN") %> / night
+                                ₹<%= listing.price ? listing.price.toLocaleString("en-IN") : "N/A" %> / night
                             </p>
+
                         </div>
                     </div>
                 </div>
