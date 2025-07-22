@@ -17,17 +17,33 @@
                     
                             
                             <!-- The error in above commented P tag is:
+                                But some of your listing.price values are undefined, which causes this error :-
+                                "TypeError: Cannot read properties of null (reading 'toLocaleString')"
 
-                            TypeError: Cannot read properties of null (reading 'toLocaleString')
-                            This means that listing.price is null or undefined in some of your data, so when you try to call .toLocaleString("en-IN"), it throws an error.
+                                ✅ Optional: Add default price while rendering (controller)
+                                        If you want to avoid changing the EJS, you can also do this in your controller before rendering:
+                                        In routes/listings.js or app.js (wherever you render):
 
-                            ✅ Solution:
-                            Before calling .toLocaleString(), you should check if listing.price exists.
+                                        listings.forEach(listing => {
+                                            if (typeof listing.price !== "number") {
+                                                listing.price = 0; // or any default value
+                                            }
+                                        });
+                            -->
 
-                            Update your EJS code like this:  -->
-
-                            <p class="card-text">
+                            <!-- <p class="card-text">
                                 ₹<%= listing.price ? listing.price.toLocaleString("en-IN") : "N/A" %> / night
+                            </p> -->
+
+
+                            <!-- If listing.price is a number
+                            If not, it shows "Price not available" instead of crashing -->
+                            <p class="card-text">
+                                <% if (typeof listing.price === 'number') { %>
+                                    ₹ <%= listing.price.toLocaleString("en-IN") %> / night
+                                <% } else { %>
+                                    Price not available
+                                <% } %>
                             </p>
 
                         </div>

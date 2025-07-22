@@ -8,10 +8,22 @@
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input  required type="text" name="gaurav[title]" placeholder="Enter your title" class="form-control">
+            <div class="valid-feedback">
+                Title looks good.
+            </div>
+            <div class="invalid-feedback">
+                Title should be Valid.
+            </div>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <textarea required type="text" name="gaurav[description]" placeholder="Enter description" class="form-control"></textarea>
+            <div class="valid-feedback">
+                Nice Description.
+            </div>
+            <div class="invalid-feedback">
+                Description should be Valid.
+            </div>
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Image</label>
@@ -21,15 +33,24 @@
             <div class="mb-3 col-md-4">
                 <label for="price" class="form-label">Price</label>
                 <input required type="number" name="gaurav[price]" placeholder="&#8377;" class="form-control">
+                <div class="invalid-feedback">
+                    Price should be Valid.
+                </div>
             </div>
             <div class="mb-3 col-md">
                 <label for="country" class="form-label">Country</label>
                 <input required type="text" name="gaurav[country]" placeholder="India" class="form-control">
+                <div class="invalid-feedback">
+                   Country name should be Valid.
+                </div>
             </div>
         </div>    
         <div class="mb-3">
             <label for="location">Location</label>
             <input required type="text" name="gaurav[location]" placeholder="Mumbai, Pune" class="form-control">
+            <div class="invalid-feedback">
+                Location should be Valid.
+            </div>
         </div>
         
         <button class="btn add-btn mb-3 mt-3">Add</button>
